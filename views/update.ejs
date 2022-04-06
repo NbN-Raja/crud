@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <%- include('header/head')%>
+  <%- include('partials/nav.ejs')%>
+
+</head>
+<body>
+
+  <div class="container">
+    <h1> User information here </h1>
+    <div class="name">
+      name: 
+    </div>
+    <div class="address">
+      address:
+    </div>
+  </div>
+  <%update.forEach(users => {%>
+    <tr>
+        <th scope="row"></th> <br>
+
+        <form action="/updates/<%=users._id %>" method="POST">
+          <fieldset>
+            <h3>Update an employee</h3>
+            <label>Employee ID</label>
+            <input type ="text" id = 'empID' name="_id" value="<%= users._id %>" required>
+            <input type ="text" id = 'empID' name="email" value="<%= users.email %>" required>
+           <a href="/delete/<%=users._id %>"> Delete</a>
+            <br><br>
+            
+           
+            <button type ="submit" name="submit">Submit</button>
+          </fieldset>
+         </form>
+        
+        
+    </tr>
+<%})%>
+  
+</body>
+</html>
